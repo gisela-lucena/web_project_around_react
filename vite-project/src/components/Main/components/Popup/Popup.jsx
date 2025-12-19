@@ -1,6 +1,8 @@
+import closeButton from "../../../../../src/images/addButton.png"
+
 export default function Popup(props) {
   //children é o conteúdo de popup
-  const { title, children } = props;
+  const { onClose, title, children } = props;
 
   return (
     <div className="popup">
@@ -9,9 +11,10 @@ export default function Popup(props) {
           aria-label="Close modal"
           className="popup__close"
           type="button"
+          onClick={onClose}
         ><img
               className="popup__close-icon"
-              src="./images/addButton.png"
+              src={closeButton}
               alt="Fechar
           popup"
           />

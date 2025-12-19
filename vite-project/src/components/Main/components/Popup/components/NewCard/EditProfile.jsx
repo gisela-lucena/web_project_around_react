@@ -1,6 +1,6 @@
 export default function EditProfile() {
   return (
-    <> <form className="popup__form" id="edit-profile-form" novalidate>
+    <form className="popup__form" id="edit-profile-form" noValidate>
       <div className="popup__input-container">
         <input
           className="popup__input popup__input_edit_name"
@@ -8,8 +8,8 @@ export default function EditProfile() {
           placeholder="Nome"
           type="text"
           required
-          minlength="2"
-          maxlength="40"
+          minLength="2"
+          maxLength="40"
         />
         <span className="popup__input-error popup__input-name-error"></span>
       </div>
@@ -20,8 +20,8 @@ export default function EditProfile() {
           placeholder="Sobre Mim"
           type="text"
           required
-          minlength="2"
-          maxlength="200"
+          minLength="2"
+          maxLength="200"
         />
         <span className="popup__input-error popup__input-profession-error"></span>
       </div>
@@ -34,5 +34,5 @@ export default function EditProfile() {
         Salvar
       </button>
     </form>
-    </>);
+    );
 }

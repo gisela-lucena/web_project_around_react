@@ -4,11 +4,11 @@ import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
 import Popup from "./Main/components/Popup/Popup.jsx";
-import EditProfile from "./Main/components/Popup/EditProfile.jsx";
-import AddCard from "./Main/components/Popup/AddCard.jsx";
-import EditAvatar from "./Main/components/Popup/EditAvatar.jsx";
-import ConfirmPopup from "./Main/components/Popup/ConfirmPopup.jsx";
-import ImagePopup from "./Main/components/Popup/ImagePopup";
+import EditProfile from "./Main/components/Popup/components/NewCard/EditProfile.jsx";
+import NewCard from "./Main/components/Popup/components/NewCard/NewCard.jsx";
+import EditAvatar from "./Main/components/Popup/components/NewCard/EditAvatar.jsx";
+import ConfirmPopup from "./Main/components/Popup/components/NewCard/ConfirmPopup.jsx";
+import ImagePopup from "./Main/components/Popup/components/NewCard/ImagePopup.jsx";
 function App() {
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
       <Popup />
       <EditProfile />
       <EditAvatar />
-      <AddCard />
+      <NewCard />
       <ConfirmPopup />
       <ImagePopup />
     </>
