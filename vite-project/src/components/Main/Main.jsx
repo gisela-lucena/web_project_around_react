@@ -4,11 +4,17 @@ import addIcon from "../../images/addButton.png";
 import { useState } from "react";
 import Popup from "./components/Popup/Popup.jsx";
 import NewCard from "./components/Popup/components/NewCard/NewCard.jsx";
+import EditProfile from "./components/Popup/components/NewCard/EditProfile.jsx";
+import EditAvatar from "./components/Popup/components/NewCard/EditAvatar.jsx";
+
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
   const newCardPopup = { title: "New card", children: <NewCard /> };
-  // crie o resto deles
+  const editProfilePopup = { title: "Edit profile", children: <EditProfile /> };
+  const editAvatarPopup = { title: "Edit avatar", children: <EditAvatar /> };
+  // const confirmPopup = { title: "Confirm deletion", children: <ConfirmPopup /> };
+  // const imagePopup = { title: "Image preview", children: <ImagePopup /> };
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -27,7 +33,20 @@ export default function Main() {
               src={avatar}
               alt="Jacques Cousteau profile picture"
             />
-            <div className="profile__picture-overlay"></div>
+            <div className="profile__picture-overlay">
+              <button
+                className="profile__edit-avatar"
+                aria-label="Editar avatar"
+                type="button"
+                onClick={() => handleOpenPopup(editAvatarPopup)}
+              >
+                <img
+                  className="profile__avatar-edit-icon"
+                  src={editIcon}
+                  alt="Editar avatar"
+                />
+              </button>
+            </div>
           </div>
           <div className="profile__info-container">
             <div className="profile__info">
@@ -35,6 +54,8 @@ export default function Main() {
               <button
                 className="profile__edit-button"
                 aria-label="Editar perfil"
+                type="button"
+                onClick={() => handleOpenPopup(editProfilePopup)}
               >
                 <img
                   className="profile__edit-icon"

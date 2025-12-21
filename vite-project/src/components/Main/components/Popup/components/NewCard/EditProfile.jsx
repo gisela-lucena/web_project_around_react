@@ -26,7 +26,6 @@ export default function EditProfile() {
         <span className="popup__input-error popup__input-profession-error"></span>
       </div>
       <button
-        disabled
         className="popup__button popup__button-active popup__button-disabled"
         type="submit"
         data-default-text="Salvar"
