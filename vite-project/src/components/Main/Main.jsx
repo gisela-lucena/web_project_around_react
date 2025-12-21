@@ -3,10 +3,38 @@ import editIcon from "../../images/editButtonVector.svg";
 import addIcon from "../../images/addButton.png";
 import { useState } from "react";
 import Popup from "./components/Popup/Popup.jsx";
-import NewCard from "./components/Popup/components/NewCard/NewCard.jsx";
-import EditProfile from "./components/Popup/components/NewCard/EditProfile.jsx";
-import EditAvatar from "./components/Popup/components/NewCard/EditAvatar.jsx";
+import NewCard from "./components/NewCard/NewCard.jsx";
+import EditProfile from "./components/NewCard/EditProfile.jsx";
+import EditAvatar from "./components/NewCard/EditAvatar.jsx";
+import Card from "./components/Card/Card.jsx";
+// import ImagePopup from "./components/ImagePopup/ImagePopup.jsx";
 
+export const cards = [
+  {
+    isLiked: false,
+    _id: "5d1f0611d321eb4bdcd707dd",
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+    owner: "5d1f0611d321eb4bdcd707dd",
+    createdAt: "2019-07-05T08:10:57.741Z",
+  },
+  {
+    isLiked: false,
+    _id: "5d1f064ed321eb4bdcd707de",
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+    owner: "5d1f0611d321eb4bdcd707dd",
+    createdAt: "2019-07-05T08:11:58.324Z",
+  },
+  // {
+  //   isLiked: false,
+  //   name: "Montanhas Carecas",
+  //   link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
+  //   owner: "5d1f0611d321eb4bdcd707dd",
+  // },
+];
+
+console.log(cards);
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
@@ -14,7 +42,6 @@ export default function Main() {
   const editProfilePopup = { title: "Edit profile", children: <EditProfile /> };
   const editAvatarPopup = { title: "Edit avatar", children: <EditAvatar /> };
   // const confirmPopup = { title: "Confirm deletion", children: <ConfirmPopup /> };
-  // const imagePopup = { title: "Image preview", children: <ImagePopup /> };
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -80,7 +107,15 @@ export default function Main() {
           </button>
         </section>
         <section className="cards">
-          <ul className="cards__list"></ul>
+          <ul className="cards__list">
+            {cards.map((card) => (
+              <Card
+                key={card._id}
+                card={card}
+                handleOpenPopup={handleOpenPopup}
+              />
+            ))}
+          </ul>
         </section>
 
         {popup && (

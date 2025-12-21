@@ -67,6 +67,7 @@
   border: 1px solid #ffffff;
   background: none;
   margin-left: auto;
+  margin-top: -30px;
 }
 
 .profile__add-place:hover {
