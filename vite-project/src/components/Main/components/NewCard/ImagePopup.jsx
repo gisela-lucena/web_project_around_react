@@ -1,20 +1,14 @@
-import Popup from "../../components/Popup/Popup";
+export default function ImagePopup(props) {
+  const { card } = props;
 
-function ImagePopup({ card, onClose }) {
   return (
-    <Popup onClose={onClose}>
-      {card && (
-        <>
-          <img
-            className="popup__image"
-            src={card.link}
-            alt={card.name}
-          />
-          <p className="popup__caption">{card.name}</p>
-        </>
-      )}
-    </Popup>
+    <div className="popup__image-container">
+      <img
+        className="popup__image"
+        src={card?.link}
+        alt={card?.name}
+      />
+      <p className="popup__caption">{card?.name}</p>
+    </div>
   );
 }
-
-export default ImagePopup;
