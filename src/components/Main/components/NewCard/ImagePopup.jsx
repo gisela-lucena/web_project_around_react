@@ -6,7 +6,7 @@ export default function ImagePopup(props) {
       <img
         className="popup__image"
         src={card?.link}
-        alt={card?.name}
+        alt={card?.name || "Imagem do card"}
       />
       <p className="popup__caption">{card?.name}</p>
     </div>

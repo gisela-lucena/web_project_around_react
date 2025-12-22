@@ -24,7 +24,7 @@ export default function Card({ card, handleOpenPopup }) {
           type="button"
           className="card__like-icon"
         />
-        {isLiked ? "liked" : "not liked"}
+        {isLiked}
       </div>
     </li>
   );

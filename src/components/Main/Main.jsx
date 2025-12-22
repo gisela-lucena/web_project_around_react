@@ -27,8 +27,6 @@ const cards = [
   },
 ];
 
-console.log(cards);
-
 export default function Main() {
   const [popup, setPopup] = useState(null);
   const newCardPopup = { title: "New card", children: <NewCard /> };
