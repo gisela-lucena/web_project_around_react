@@ -1,18 +1,8 @@
-import Main from "../../Main.jsx";
-import imagePopup from "../../components/NewCard/ImagePopup.jsx";
-import { useState } from "react";
-
+import ImagePopup from "../../components/NewCard/ImagePopup.jsx";
 
 export default function Card({ card, handleOpenPopup }) {
   const { name, link, isLiked } = card;
-  const [popup, setPopup] = useState(null);
-
-  function handleOpenPopup(popup) {
-    setPopup(popup);
-  }
-  function handleClosePopup() {
-    setPopup(null);
-  }
+  const imagePopup = { title: null, children: <ImagePopup card={card} /> };
 
   return (
     <li className="card">

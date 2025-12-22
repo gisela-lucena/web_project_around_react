@@ -7,7 +7,7 @@ import NewCard from "./components/NewCard/NewCard.jsx";
 import EditProfile from "./components/NewCard/EditProfile.jsx";
 import EditAvatar from "./components/NewCard/EditAvatar.jsx";
 import Card from "./components/Card/Card.jsx";
-import ImagePopup from "./components/NewCard/ImagePopup.jsx";
+// import ImagePopup from "./components/NewCard/ImagePopup.jsx";
 
 const cards = [
   {
@@ -35,8 +35,8 @@ export default function Main() {
   const newCardPopup = { title: "New card", children: <NewCard /> };
   const editProfilePopup = { title: "Edit profile", children: <EditProfile /> };
   const editAvatarPopup = { title: "Edit avatar", children: <EditAvatar /> };
-  const [selectedCard, setSelectedCard] = useState(false);
-  const imagePopup = { title: null, children: <ImagePopup card={selectedCard} /> }; // const confirmPopup = { title: "Confirm deletion", children: <ConfirmPopup /> };
+  // const [selectedCard, setSelectedCard] = useState(false);
+  // const imagePopup = { title: null, children: <ImagePopup card={selectedCard} /> }; // const confirmPopup = { title: "Confirm deletion", children: <ConfirmPopup /> };
 
 
   function handleOpenPopup(popup) {
@@ -108,7 +108,8 @@ export default function Main() {
               <Card
                 key={card._id}
                 card={card}
-                onClick={() => handleOpenPopup(imagePopup)}
+                handleOpenPopup={handleOpenPopup}
+                // onClick={() => handleOpenPopup(imagePopup)}
               />
             ))}
           </ul>
