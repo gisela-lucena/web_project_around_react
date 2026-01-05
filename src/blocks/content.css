@@ -47,7 +47,7 @@
   overflow: hidden;
 }
 
-.card__like-icon {
+.card__like-button {
   width: 21px;
   height: 21px;
   border: none;
@@ -57,11 +57,11 @@
   background-size: 100%;
 }
 
-.card__like-icon.active {
+.card__like-button.active {
   background-image: url(../images/likevectorActive.svg);
 }
 
-.card__like-icon:hover {
+.card__like-button:hover {
   cursor: pointer;
   opacity: 0.6;
 }
