@@ -33,6 +33,8 @@ CSS3
 Styling with BEM methodology
 REST API
 Integration with the backend for data persistence
+---
+
 📁 Project Structure
 src/
 ├── components/
@@ -67,6 +69,8 @@ src/
 │   └── [image resources]
 ├── index.css
 └── main.jsx
+--
+
 ⚙️ Installation and Execution
 ### Prerequisites
 - Node.js (version 16 or higher)
