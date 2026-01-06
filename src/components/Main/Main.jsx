@@ -1,49 +1,21 @@
 import editIcon from "../../images/editButtonVector.svg";
 import addIcon from "../../images/addButton.png";
-import { useState, useEffect, useContext } from "react";
+import { useContext, useState } from "react";
 import Popup from "./components/Popup/Popup.jsx";
 import NewCard from "./components/NewCard/NewCard.jsx";
 import EditProfile from "./components/NewCard/EditProfile.jsx";
 import EditAvatar from "./components/NewCard/EditAvatar.jsx";
 import Card from "./components/Card/Card.jsx";
-import api from "../../utils/api.js"
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ConfirmPopup from "./components/NewCard/ConfirmPopup.jsx";
 
 
-export default function Main({ popup, onOpenPopup, onClosePopup }) {
+function Main({ popup, onOpenPopup, onClosePopup, cards }) {
   const newCardPopup = { title: "New card", children: <NewCard /> };
   const editProfilePopup = { title: "Edit profile", children: <EditProfile /> };
   const editAvatarPopup = { title: "Edit avatar", children: <EditAvatar /> };
-  const { currentUser } = useContext(CurrentUserContext);
-  const [cards, setCards] = useState([])
-
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  async function handleCardLike(card) {
-    // Verificar mais uma vez se esse cartão já foi curtido
-    const isLiked = card.isLiked;
-    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
-    await api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-    }).catch((error) => console.error(error));
-  }
-
-  async function handleCardDelete(cardId) {
-    await api.deleteCard(cardId).then(() => {
-      setCards((state) => state.filter((currentCard) => currentCard._id !== cardId))
-    }).catch((error) => console.error(error));
-  }
-
-
+  const { currentUser, handleCardDelete, handleCardLike } = useContext(CurrentUserContext);
+  
   return (
     <>
       <main className="content">
@@ -101,18 +73,30 @@ export default function Main({ popup, onOpenPopup, onClosePopup }) {
           </button>
         </section>
         <section className="cards">
-          <ul className="cards__list">
-            {cards.map((card) => (
-              <Card
-                key={card._id}
-                card={card}
-                onOpenPopup={onOpenPopup}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-              />
-            ))}
-          </ul>
-        </section>
+        <ul className="cards__list">
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              card={card}
+              onCardLike={handleCardLike}
+              onCardDelete={() => {
+                // Abre popup de confirmação passando card diretamente
+                onOpenPopup({
+                  title: "Tem certeza?",
+                  children: (
+                    <ConfirmPopup
+                      onConfirm={() => {
+                        handleCardDelete(card);
+                        onClosePopup();
+                      }}
+                    />
+                  ),
+                });
+              }}
+            />
+          ))}
+        </ul>
+      </section>
 
         {popup && (
           <Popup title={popup.title}
@@ -124,3 +108,5 @@ export default function Main({ popup, onOpenPopup, onClosePopup }) {
     </>
   );
 }
+
+export default Main;

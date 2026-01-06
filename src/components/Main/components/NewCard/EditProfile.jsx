@@ -4,7 +4,7 @@ import CurrentUserContext from '../../../../contexts/CurrentUserContext';
 function EditProfile() {
   const userContext = useContext(CurrentUserContext); // Obtém o objeto de usuário atual
   const { currentUser, handleUpdateUser } = userContext;
-
+  const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState(currentUser.name); // Adicione variável de estado para nome
   const [description, setDescription] = useState(currentUser.about); // Adicione variável de estado para descrição
 
@@ -17,9 +17,13 @@ function EditProfile() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Impede o comportamento padrão de envio do formulário
+    event.preventDefault();
+    setIsLoading(true);// Impede o comportamento padrão de envio do formulário
 
-    handleUpdateUser({ name, about: description }); // Atualiza as informações do usuário
+    handleUpdateUser({ name, about: description })
+      .finally(() => {
+        setIsLoading(false);
+      });// Atualiza as informações do usuário
   };
 
   return (
@@ -27,7 +31,6 @@ function EditProfile() {
       className="popup__form"
       name="profile-form"
       id="edit-profile-form"
-      noValidate
       onSubmit={handleSubmit}
     >
       <label className="popup__label">
@@ -60,8 +63,8 @@ function EditProfile() {
         />
         <span className="popup__error" id="owner-description-error"></span>
       </label>
-      <button className="button popup__button" type="submit">
-        Salvar
+      <button className="button popup__button" type="submit" disabled={isLoading}>
+        {isLoading ? "Salvando..." : "Salvar"}
       </button>
     </form>
   );
