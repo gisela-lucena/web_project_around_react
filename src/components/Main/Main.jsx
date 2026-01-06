@@ -10,7 +10,7 @@ import api from "../../utils/api.js"
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
-export default function Main({ popup, onOpenPopup }) {
+export default function Main({ popup, onOpenPopup, onClosePopup }) {
   const newCardPopup = { title: "New card", children: <NewCard /> };
   const editProfilePopup = { title: "Edit profile", children: <EditProfile /> };
   const editAvatarPopup = { title: "Edit avatar", children: <EditAvatar /> };
@@ -115,7 +115,8 @@ export default function Main({ popup, onOpenPopup }) {
         </section>
 
         {popup && (
-          <Popup title={popup.title}>
+          <Popup title={popup.title}
+            onClose={onClosePopup}>
             {popup.children}
           </Popup>
         )}

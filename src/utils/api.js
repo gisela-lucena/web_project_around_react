@@ -98,23 +98,3 @@ const api = new Api({
 });
 
 export default api;
-
-// const userInfo = new UserInfo({
-//   nameSelector: ".profile__title",
-//   jobSelector: ".profile__subtitle",
-//   avatarSelector: ".profile__image",
-// });
-
-// api
-//   .getInitialData()
-//   .then(([userData, initialCards]) => {
-//     userInfo.setUserInfo({
-//       name: userData.name,
-//       job: userData.about,
-//       avatar: userData.avatar,
-//     });
-//     cardsList.renderItems(initialCards);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
