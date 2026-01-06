@@ -35,42 +35,6 @@ REST API
 Integration with the backend for data persistence
 ---
 
-📁 Project Structure
-src/
-├── components/
-│   ├── App.jsx
-│   ├── Header/
-│   │   └── Header.jsx
-│   ├── Main/
-│   │   ├── Main.jsx
-│   │   └── Card/
-│   │       └── Card.jsx
-│   ├── Footer/
-│   │   └── Footer.jsx
-│   └── Popup/
-│       ├── Popup.jsx
-│       ├── EditProfile/
-│       │   └── EditProfile.jsx
-│       ├── EditAvatar/
-│       │   └── EditAvatar.jsx
-│       ├── NewCard/
-│       │   └── NewCard.jsx
-│       ├── RemoveCard/
-│       │   └── RemoveCard.jsx
-│       └── ImagePopup/
-│           └── ImagePopup.jsx
-├── contexts/
-│   └── CurrentUserContext.js
-├── utils/
-│   └── api.js
-├── blocks/
-│   └── [CSS files organized by block] [README]
-├── images/
-│   └── [image resources]
-├── index.css
-└── main.jsx
---
-
 ⚙️ Installation and Execution
 ### Prerequisites
 - Node.js (version 16 or higher)
