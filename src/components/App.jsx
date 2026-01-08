@@ -21,7 +21,12 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+
+    api.getUser().then((data) => {
+      setCurrentUser(data)
+    })
   }, []);
+
 
   async function handleCardLike(card) {
     // Verificar mais uma vez se esse cartão já foi curtido
@@ -45,13 +50,6 @@ function App() {
       handleClosePopup();
     }).catch((error) => console.error(error));
   }
-
-
-  useEffect(() => {
-    api.getUser().then((data) => {
-      setCurrentUser(data)
-    })
-  }, []);
 
   const handleUpdateUser = (data) => {
     (async () => {
